@@ -5,14 +5,30 @@
     <title>Assignment</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://github.com/WalletConnect/walletconnect-monorepo/releases/download/1.7.1/web3-provider.min.js"></script>
 </head>
 
 <body>
     <button id="btn-login">Metamask Login</button>
+    <button id="btn-login2">WalletConnect</button>
+    <button id="btn-login3">PhantomConnect</button>
     <button id="btn-logout">Logout</button>
     <button id="btn-balance">Check Balance</button>
     <button id="btn-nft">Check NFTs</button>
+    <button id="btn-eth">All Eth Transactions</button>
+    <button id="btn-ptz">All Polygon Transfers</button>
+    <button id="btn-bsctz">All Binance Transfers</button>
+    <button id="btn-matic">All Matic</button>
+
+    <ul id="demo"></ul>
+
     <script type="text/javascript" src="./main.js">
+        let list = document.getElementById("demo");
+        data.forEach((item) => {
+            let li = document.createElement("li");
+            li.innerText = item;
+            list.appendChild(li);
+        })
     </script>
 
 
