@@ -2,10 +2,70 @@
 <html>
 
 <head>
-    <title>Assignment</title>
+    <title>Login Page</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
     <script src="https://github.com/WalletConnect/walletconnect-monorepo/releases/download/1.7.1/web3-provider.min.js"></script>
+    <script>
+        
+        getTransactionerc20 = async () => {
+            var str1 = document.getElementById("eth-trx").value
+             fetch(`https://api.etherscan.io/api?module=account&action=tokentx&address=${str1}&page=1&offset=1000&startblock=0&endblock=27025780&sort=desc&apikey=Z9QDZV3JH4Y9CFHBARJT1CH634QS5HSDX5`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        getTransactioneth = async () => {
+            var str1 = document.getElementById("eth-trx").value
+             fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${str1}&startblock=0&endblock=99999999&page=1&offset=1000&sort=desc&apikey=Z9QDZV3JH4Y9CFHBARJT1CH634QS5HSDX5`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        getTransactionmatictoken = async () => {
+            var str2 = document.getElementById("matic-trx").value
+             fetch(`https://api.polygonscan.com/api?module=account&action=tokentx&address=${str2}&startblock=0&endblock=99999999&page=1&offset=100&sort=desc&apikey=R8XWNV6CNVEESK89I7VSI2II6BK3XMWD4P`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        getTransactionmatic = async () => {
+            var str2 = document.getElementById("matic-trx").value
+             fetch(`https://api.polygonscan.com/api?module=account&action=txlist&address=${str2}&startblock=0&endblock=99999999&page=1&offset=100&sort=desc&apikey=R8XWNV6CNVEESK89I7VSI2II6BK3XMWD4P`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        getTransactionbsc20 = async () => {
+            var str3 = document.getElementById("bsc-trx").value
+             fetch(`https://api.bscscan.com/api?module=account&action=tokentx&address=${str3}&page=1&offset=10&startblock=0&endblock=999999999&sort=desc&apikey=1DCJ11ARE5ED2TZ7DVN9AJQPRWQKKEGHIS`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        getTransactionbsc = async () => {
+            var str3 = document.getElementById("bsc-trx").value
+             fetch(`https://api.bscscan.com/api?module=account&action=txlist&address=${str3}&startblock=0&endblock=99999999&page=1&offset=100&sort=desc&apikey=1DCJ11ARE5ED2TZ7DVN9AJQPRWQKKEGHIS`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        getTransactionsoltoken = async () => {
+            var str4 = document.getElementById("sol-trx").value
+             fetch(`https://public-api.solscan.io/account/splTransfers?account=${str4}&offset=0&limit=50`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        getTransactionsol = async () => {
+            var str4 = document.getElementById("sol-trx").value
+             fetch(`https://public-api.solscan.io/account/solTransfers?account=${str4}&offset=0&limit=50`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+
+    </script>
 </head>
 
 <body>
@@ -15,10 +75,41 @@
     <button id="btn-logout">Logout</button>
     <button id="btn-balance">Check Balance</button>
     <button id="btn-nft">Check NFTs</button>
-    <button id="btn-eth">All Eth Transactions</button>
+ <!--<button id="btn-eth">All Eth Transactions</button>-->
     <button id="btn-ptz">All Polygon Transfers</button>
     <button id="btn-bsctz">All Binance Transfers</button>
     <button id="btn-matic">All Matic</button>
+    <button id="combine">ALL</button>
+    <br>
+
+    <!--<br>
+
+    <input id="domain">
+    <button id="btn-domain" onclick='getResolved()'>Resolve</button>
+
+    <br>-->
+    <br>
+
+    <input id="eth-trx">
+    <button id="btn1" onclick='getTransactioneth(),getTransactionerc20()'>Eth Transactions</button>
+
+    <br>
+    <br>
+
+    <input id="matic-trx">
+    <button id="btn2" onclick='getTransactionmatic(),getTransactionmatictoken()'>Polygon Transactions</button>
+
+    <br>
+    <br>
+
+    <input id="bsc-trx">
+    <button id="btn3" onclick='getTransactionbsc(),getTransactionbsc20()'>Bsc Transactions</button>
+
+    <br>
+    <br>
+
+    <input id="sol-trx">
+    <button id="btn4" onclick='getTransactionsol(),getTransactionsoltoken()'>Solana Transactions</button>
 
     <ul id="demo"></ul>
 
