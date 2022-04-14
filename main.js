@@ -26,8 +26,12 @@ async function login() {
         console.log(balbsc)
 
         /** All NFTs Token ID and Contract address will be displayed in Console too  */
-        const userEthNFTs = await Moralis.Web3.getNFTs(0xC685CD8c09A970D0fD1097B115fD8d9E104f656f);
+        const userEthNFTs = await Moralis.Web3.getNFTs('0xd8da6bf26964af9d7eed9e03e53415d37aa96045');
         console.log(userEthNFTs)
+
+        const options = { address: '0xd8da6bf26964af9d7eed9e03e53415d37aa96045' };
+        const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
+        console.log(polygonNFTs)
 
         getTransactioneth = async () => {
              fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${addresseth}&startblock=0&endblock=99999999&page=1&offset=100&sort=desc&apikey=Z9QDZV3JH4Y9CFHBARJT1CH634QS5HSDX5`)
@@ -38,6 +42,7 @@ async function login() {
         console.log(error)
     }
 }
+
 
 async function checkAddress() {
     var str4 = document.getElementById("sol-trx").value

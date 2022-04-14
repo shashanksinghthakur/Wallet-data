@@ -64,6 +64,24 @@
             .then(data => console.log(data)); 
         }
 
+        gethisbalanceeth = async () => {
+             fetch(`https://api.covalenthq.com/v1/1/tokens/0xD533a949740bb3306d119CC777fa900bA034cd52/token_holders/?quote-currency=USD&format=JSON&key=ckey_7226c22e0c6a4aaba3c408e8891`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        gethisbalancematic = async () => {
+             fetch(`https://api.covalenthq.com/v1/137/tokens/0xD533a949740bb3306d119CC777fa900bA034cd52/token_holders/?quote-currency=USD&format=JSON&key=ckey_7226c22e0c6a4aaba3c408e8891`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
+        gethisbalancebnb = async () => {
+             fetch(`https://api.covalenthq.com/v1/56/tokens/0xD533a949740bb3306d119CC777fa900bA034cd52/token_holders/?quote-currency=USD&format=JSON&key=ckey_7226c22e0c6a4aaba3c408e8891`)
+            .then(response => response.json())
+            .then(data => console.log(data)); 
+        }
+
 
     </script>
 </head>
@@ -80,6 +98,9 @@
     <button id="btn-bsctz">All Binance Transfers</button>
     <button id="btn-matic">All Matic</button>
     <button id="combine">ALL</button>
+    <button id="api" onclick='gethisbalanceeth()'>ETH Contract</button>
+    <button id="api" onclick='gethisbalancematic()'>POLYGON Contract</button>
+    <button id="api" onclick='gethisbalancebnb()'>BINANCE Contract</button>
     <br>
 
     <!--<br>
