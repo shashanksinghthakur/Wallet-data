@@ -1,7 +1,7 @@
 /**I have used Moralis WEBB3 Platform for backend server */
 /** Connect to server (Backend) */
-const serverUrl = "https://7yickcrlxhqb.usemoralis.com:2053/server";
-const appId = "Q01lYD7aOQvnoqjUwHkzPyJx1ZyXy2puSNmyXW3e";
+const serverUrl = "https://b8u0mvr4sfat.usemoralis.com:2053/server";
+const appId = "mq2GNjM2b9RRCWf5gw5oB97G4HB8HThs9gl3rlMS";
 Moralis.start({ serverUrl, appId });
 
 /** login in Metamask  */
@@ -55,7 +55,7 @@ async function checkAddress() {
 
 async function logIn2() {
 const user = await Moralis.authenticate({ provider: "walletconnect" })
-console.log("user")
+console.log(user)
 document.getElementById('btn-login2').innerHTML = user.get('address')
 }
 
@@ -72,14 +72,29 @@ async function logOut() {
     console.log("logged out");
 }
 
+async function getSignmessage() {
+    const message = `To avoid digital dognappers,
+    sign below to authenticate with CryptoCorgis`;
+const encodedMessage = new TextEncoder().encode(message);
+const signedMessage = await window.solana.signMessage(encodedMessage, "utf8");
+console.log(signedMessage)
+}
+
 async function getAllERC20() {
     const balances = await Moralis.Web3.getAllERC20();
     console.log(balances);
 }
 
 async function getNFTs() {
-    const userEthNFTs = await Moralis.Web3.getNFTs();
-    console.log(userEthNFTs);
+    const options = { chain: 'matic', address: '0x22256c1e34DB43E56311A27aB0B4436530cfE29D'};
+    const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
+    console.log(polygonNFTs);
+}
+
+async function getNFTsforcontract() {
+    const options = { chain: "matic", address: "0x...", token_address: "0x..." };
+const polygonNFTs = await Moralis.Web3API.account.getNFTsForContract(options);
+console.log(polygonNFTs)
 }
 
 
